@@ -54,7 +54,7 @@ class MoviesViewModel : ViewModel() {
         }
     }
 
-    fun navigate(navController: NavController) {
+    fun navigate(movie: Movie, navController: NavController) {
         _appUIState.update { currentState ->
             currentState.copy(
                 title = R.string.MovieDescription,
