@@ -49,7 +49,6 @@ import com.example.moviedatabaseapp.ui.viewmodels.MoviesViewModel
 fun MoviesScreen(
     viewModel: MoviesViewModel,
     modifier: Modifier = Modifier,
-    navController: NavController
 ) {
     val uiState by viewModel.uiState.collectAsState()
     when (uiState) {
