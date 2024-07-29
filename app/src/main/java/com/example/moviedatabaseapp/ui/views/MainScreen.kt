@@ -18,12 +18,12 @@ import com.example.moviedatabaseapp.ui.viewmodels.MoviesViewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun App(
+fun MainScreen(
     modifier: Modifier = Modifier
 ) {
     val viewModel: MoviesViewModel = viewModel()
     val navController = rememberNavController()
-    val uiState by viewModel.appUIState.collectAsState()
+    val uiState by viewModel.MainScreenUIState.collectAsState()
 
     Scaffold(
         topBar = {
@@ -35,8 +35,14 @@ fun App(
             startDestination = AppScreens.MoviesScreen.name,
             modifier = modifier.padding(it)
         ) {
-            composable(route = AppScreens.MovieDescription.name) {
-                MovieDescription(viewModel = viewModel, navController = navController)
+            composable(AppScreens.MoviesScreen.name) {
+                MoviesScreen(viewModel = viewModel)
+            }
+            composable(AppScreens.MovieDescription.name + "/{movieId}") { backStackEntry ->
+                val movieId = backStackEntry.arguments?.getString("movieId")
+                if (movieId != null) {
+                    MovieDescription(id = movieId, navController = navController, viewModel = viewModel)
+                }
             }
         }
     }

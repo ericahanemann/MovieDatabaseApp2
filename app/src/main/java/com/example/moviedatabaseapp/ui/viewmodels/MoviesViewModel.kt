@@ -8,7 +8,7 @@ import com.example.moviedatabaseapp.R
 import com.example.moviedatabaseapp.data.Movie
 import com.example.moviedatabaseapp.network.MovieDatabaseApi
 import com.example.moviedatabaseapp.ui.views.AppScreens
-import com.example.moviedatabaseapp.ui.views.AppUIState
+import com.example.moviedatabaseapp.ui.views.MainScreenUIState
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -28,9 +28,9 @@ class MoviesViewModel : ViewModel() {
     private var _uiState: MutableStateFlow<MoviesUIState> = MutableStateFlow(MoviesUIState.Loading)
     val uiState: StateFlow<MoviesUIState> = _uiState.asStateFlow()
 
-    private val _appUIState: MutableStateFlow<AppUIState> = MutableStateFlow(AppUIState())
+    private val _appUIState: MutableStateFlow<MainScreenUIState> = MutableStateFlow(MainScreenUIState())
 
-    val appUIState: StateFlow<AppUIState> = _appUIState.asStateFlow()
+    val MainScreenUIState: StateFlow<MainScreenUIState> = _appUIState.asStateFlow()
 
     init {
         getPopularMovies()
@@ -60,23 +60,23 @@ class MoviesViewModel : ViewModel() {
                 title = R.string.MovieDescription,
             )
         }
-        navController.navigate(AppScreens.MovieDescription.name)
+        navController.navigate("${AppScreens.MovieDescription.name}/${movie.id}")
 
         _appUIState.update {
-            AppUIState()
+            MainScreenUIState()
         }
 
         // --- navega de volta a tela inicial ---
-        navController.navigate(AppScreens.MoviesScreen.name) {
-            popUpTo(AppScreens.MoviesScreen.name) {
-                inclusive = true
-            }
-        }
+//        navController.navigate(AppScreens.MoviesScreen.name) {
+//            popUpTo(AppScreens.MoviesScreen.name) {
+//                inclusive = true
+//            }
+//        }
     }
 
     fun navigateBack(navController: NavController) {
         _appUIState.update {
-            AppUIState()
+            MainScreenUIState()
         }
         navController.popBackStack()
     }

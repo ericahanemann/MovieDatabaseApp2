@@ -6,5 +6,5 @@ import com.example.moviedatabaseapp.ui.viewmodels.MoviesViewModel
 
 
 @Composable
-fun MovieDescription(viewModel: MoviesViewModel, navController: NavController) {
+fun MovieDescription(id: String, viewModel: MoviesViewModel, navController: NavController) {
 }

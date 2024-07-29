@@ -1,5 +1,6 @@
 package com.example.moviedatabaseapp.ui.views
 
+import android.util.Log
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
@@ -56,7 +57,12 @@ fun MoviesScreen(
     val uiState by viewModel.uiState.collectAsState()
     when (uiState) {
         is MoviesUIState.Loading -> LoadingScreen()
-        is MoviesUIState.Success -> MovieList(movies = (uiState as MoviesUIState.Success).movies, navController = navController, viewModel = viewModel)
+        is MoviesUIState.Success -> MovieList(
+            movies = (uiState as MoviesUIState.Success).movies,
+            navController = navController,
+            viewModel = viewModel
+        )
+
         is MoviesUIState.Error -> ErrorScreen()
     }
 }
@@ -132,9 +138,10 @@ fun MovieList(
             items(movies) { movie ->
                 MovieEntry(movie = movie, onMovieClick = {
                     viewModel.navigate(
-                    movie = movie,
-                    navController = navController
-                )})
+                        movie = movie,
+                        navController = navController
+                    )
+                })
             }
         }
     }
@@ -154,7 +161,12 @@ fun MovieEntry(
     }
 
     Card(
-        modifier = Modifier.padding(6.dp).clickable { onMovieClick() },
+        modifier = Modifier
+            .padding(6.dp)
+            .clickable {
+                Log.d("MovieEntry", "Card clicked: ${movie.title}")
+                onMovieClick()
+            },
         elevation = CardDefaults.cardElevation(defaultElevation = 8.dp)
     ) {
         Box() {
