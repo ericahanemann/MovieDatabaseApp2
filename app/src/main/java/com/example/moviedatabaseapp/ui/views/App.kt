@@ -23,7 +23,6 @@ fun App(
 ) {
     val viewModel: MoviesViewModel = viewModel()
     val navController = rememberNavController()
-
     val uiState by viewModel.appUIState.collectAsState()
 
     Scaffold(
@@ -37,7 +36,7 @@ fun App(
             modifier = modifier.padding(it)
         ) {
             composable(route = AppScreens.MovieDescription.name) {
-                MovieDescription(viewModel = viewModel)
+                MovieDescription(viewModel = viewModel, navController = navController)
             }
         }
     }

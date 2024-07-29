@@ -10,8 +10,11 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.moviedatabaseapp.ui.theme.MovieDatabaseAppTheme
+import com.example.moviedatabaseapp.ui.viewmodels.MoviesViewModel
 import com.example.moviedatabaseapp.ui.views.App
+import com.example.moviedatabaseapp.ui.views.MovieList
 import com.example.moviedatabaseapp.ui.views.MoviesScreen
 
 class MainActivity : ComponentActivity() {

@@ -37,6 +37,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
+import androidx.navigation.NavController
 import coil.compose.AsyncImage
 import coil.request.ImageRequest
 import com.example.moviedatabaseapp.R
@@ -46,9 +47,11 @@ import com.example.moviedatabaseapp.ui.viewmodels.MoviesViewModel
 
 @Composable
 fun MoviesScreen(
-    moviesViewModel: MoviesViewModel = viewModel()
+    viewModel: MoviesViewModel,
+    modifier: Modifier = Modifier,
+    navController: NavController
 ) {
-    val uiState by moviesViewModel.uiState.collectAsState()
+    val uiState by viewModel.uiState.collectAsState()
     when (uiState) {
         is MoviesUIState.Loading -> LoadingScreen()
         is MoviesUIState.Success -> MovieList(movies = (uiState as MoviesUIState.Success).movies)
@@ -87,7 +90,6 @@ fun ErrorScreen() {
         )
     }
 }
-
 
 @Composable
 fun MovieList(
