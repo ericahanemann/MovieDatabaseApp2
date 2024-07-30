@@ -44,16 +44,16 @@ import androidx.navigation.compose.rememberNavController
 import coil.compose.AsyncImage
 import coil.request.ImageRequest
 import com.example.moviedatabaseapp.R
-import com.example.moviedatabaseapp.data.Movie
+import com.example.moviedatabaseapp.models.Movie
 import com.example.moviedatabaseapp.ui.viewmodels.MoviesUIState
 import com.example.moviedatabaseapp.ui.viewmodels.MoviesViewModel
 
 @Composable
 fun MoviesScreen(
     viewModel: MoviesViewModel,
+    navController: NavController,
     modifier: Modifier = Modifier,
 ) {
-    val navController = rememberNavController()
     val uiState by viewModel.uiState.collectAsState()
     when (uiState) {
         is MoviesUIState.Loading -> LoadingScreen()

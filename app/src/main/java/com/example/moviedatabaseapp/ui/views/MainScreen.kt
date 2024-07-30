@@ -35,13 +35,13 @@ fun MainScreen(
             startDestination = AppScreens.MoviesScreen.name,
             modifier = modifier.padding(it)
         ) {
-            composable(AppScreens.MoviesScreen.name) {
-                MoviesScreen(viewModel = viewModel)
+            composable(route = AppScreens.MoviesScreen.name) {
+                MoviesScreen(viewModel = viewModel, navController = navController)
             }
-            composable(AppScreens.MovieDescription.name + "/{movieId}") { backStackEntry ->
-                val movieId = backStackEntry.arguments?.getString("movieId")
+            composable(AppScreens.MovieDescription.name + "/{id}") { backStackEntry ->
+                val movieId = backStackEntry.arguments?.getString("id")
                 if (movieId != null) {
-                    MovieDescription(id = movieId, navController = navController, viewModel = viewModel)
+                    MovieDescription(id = movieId, viewModel = viewModel, navController = navController)
                 }
             }
         }

@@ -5,5 +5,5 @@ import com.example.moviedatabaseapp.R
 
 data class MainScreenUIState(
     @StringRes
-    val title: Int = R.string.MovieList,
+    val title: Int = R.string.movies,
     )

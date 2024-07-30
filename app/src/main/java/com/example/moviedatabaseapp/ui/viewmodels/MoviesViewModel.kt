@@ -5,7 +5,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.navigation.NavController
 import com.example.moviedatabaseapp.R
-import com.example.moviedatabaseapp.data.Movie
+import com.example.moviedatabaseapp.models.Movie
 import com.example.moviedatabaseapp.network.MovieDatabaseApi
 import com.example.moviedatabaseapp.ui.views.AppScreens
 import com.example.moviedatabaseapp.ui.views.MainScreenUIState
@@ -55,11 +55,13 @@ class MoviesViewModel : ViewModel() {
     }
 
     fun navigate(movie: Movie, navController: NavController) {
+
         _appUIState.update { currentState ->
             currentState.copy(
                 title = R.string.MovieDescription,
             )
         }
+
         navController.navigate("${AppScreens.MovieDescription.name}/${movie.id}")
 
         _appUIState.update {

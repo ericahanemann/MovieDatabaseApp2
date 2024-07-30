@@ -1,6 +1,6 @@
 package com.example.moviedatabaseapp.network
 
-import com.example.moviedatabaseapp.data.Movie
+import com.example.moviedatabaseapp.models.Movie
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import retrofit2.Retrofit

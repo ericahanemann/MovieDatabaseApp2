@@ -2,4 +2,7 @@
     <string name="app_name">MovieDatabaseApp</string>
     <string name="MovieList">Movie`s List</string>
     <string name="MovieDescription">Movie Description</string>
+    <string name="movieDescription">MOVIE DESCRIPTION</string>
+    <string name="movie">MOVIES LIST</string>
+    <string name="movies">KOTLIN VIDEO</string>
 </resources>
